@@ -9,4 +9,4 @@ git clone https://github.com/vdloo/baseimage-docker-32bit
 cd baseimage-docker-32bit/image
 
 # Build the 32 bit Ubuntu base image
-docker build -t vdloo/i386-baseimage .
+sudo docker build -t vdloo/i386-baseimage .
