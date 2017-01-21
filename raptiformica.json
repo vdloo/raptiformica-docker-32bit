@@ -1,0 +1,17 @@
+{
+  "raptiformica_api_version": "0.1",
+  "compute": {
+    "docker_32bit": {
+      "headless": {
+        "available": "docker -v && (uname -m | grep 'i386\\|i486\\|i586\\|i686')",
+        "source": "https://github.com/vdloo/raptiformica-docker-32bit",
+        "start_instance": "sh build.sh; ssh-add -L > instance_key.pub; (sudo docker images | grep raptiformica-baseimage || sudo docker build -t raptiformica-baseimage .) && sudo docker run --privileged -d raptiformica-baseimage > container_id && sleep 10",
+        "get_hostname": "bash -c \"sudo docker inspect -f '{{ .NetworkSettings.IPAddress }}' $(cat container_id)\" | tail -n 1",
+        "get_port": "echo 22",
+        "detect_stale_instance": "bash -c '[ -f container_id ] && sudo docker ps --no-trunc | grep -f container_id'",
+        "clean_up_instance_command": "bash -c 'cd [ -f container_id ] && (cat container_id | xargs sudo docker kill -9 || /bin/true; cat container_id | xargs sudo docker rm -f || /bin/true)'",
+        "package": "sh package.sh"
+      }
+    }
+  }
+}
