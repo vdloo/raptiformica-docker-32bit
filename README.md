@@ -12,3 +12,17 @@ To install the module
 raptiformica modprobe vdloo/raptiformica-docker-32bit
 ```
 
+Example:
+```
+[vdloo@i686host ~]$ raptiformica spawn --help
+You need to have at least one available type configured for compute. 
+Do you have the required dependencies installed? Check your config file
+[vdloo@i686host ~]$ raptiformica modprobe vdloo/raptiformica-docker-32bit
+Checking out vdloo/raptiformica-docker-32bit
+Cloning https://github.com/vdloo/raptiformica-docker-32bit to /home/vdloo/.raptiformica.d/modules/raptiformica-docker-32bit
+[vdloo@i686host ~]$ raptiformica spawn --help
+...
+  --compute-type {docker_32bit}
+                        Specify a compute type. Default is docker_32bit
+...
+```
