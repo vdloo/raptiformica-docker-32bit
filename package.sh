@@ -9,7 +9,7 @@ cd "$PACKAGED_DIR"
 if [ ! -d raptiformica-docker-32bit ]; then
     git clone --recursive https://github.com/vdloo/raptiformica-docker-32bit
 else
-    cd raptiformica
+    cd raptiformica-docker-32bit
     git clean -xfd
     git reset --hard origin/master
     git pull origin master
@@ -19,7 +19,7 @@ fi
 LOG_FILE="/tmp/$(uuidgen)"
 
 # Provision the box
-PYTHONPATH=raptiformica raptiformica/bin/raptiformica_spawn.py --compute-type docker_32bit --no-assimilate | tee $LOG_FILE
+PYTHONPATH=/usr/etc/raptiformica /usr/etc/raptiformica/bin/raptiformica_spawn.py --compute-type docker_32bit --no-assimilate | tee $LOG_FILE
 
 MACHINE_UUID=$(grep .raptiformica.d/var/machines/docker_32bbit/headless/ $LOG_FILE  | head -n 1 | rev | cut -d '/' -f1 | rev)
 
