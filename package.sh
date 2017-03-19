@@ -9,7 +9,7 @@ cd "$PACKAGED_DIR"
 if [ ! -d raptiformica-docker-32bit ]; then
     git clone --recursive https://github.com/vdloo/raptiformica-docker-32bit
 else
-    cd raptiformica
+    cd raptiformica-docker-32bit
     git clean -xfd
     git reset --hard origin/master
     git pull origin master

@@ -10,7 +10,7 @@
         "get_port": "echo 22",
         "detect_stale_instance": "bash -c '[ -f container_id ] && sudo docker ps --no-trunc | grep -f container_id'",
         "clean_up_instance_command": "bash -c 'cd [ -f container_id ] && (cat container_id | xargs sudo docker kill -9 || /bin/true; cat container_id | xargs sudo docker rm -f || /bin/true)'",
-        "package": "sh package.sh"
+        "package": "cd $(find $HOME -type d -name raptiformica-docker-32bit | head -n 1); sh package.sh"
       }
     }
   }
